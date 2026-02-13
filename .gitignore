@@ -1,0 +1,93 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+*.dylib
+
+# Virtual environments
+.env
+.env.*
+venv/
+ENV/
+env/
+.venv/
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+
+# MyPy
+.mypy_cache/
+
+# Cython debug
+cython_debug/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Docker
+docker-compose.override.yml
+
+# Logs and runtime files
+logs/
+*.log
+*.pid
+*.seed
+
+# Model, weights and large artifacts (downloaded at runtime)
+models/
+weights/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.onnx
+*.h5
+*.hdf5
+
+# ML experiment tooling
+runs/
+wandb/
+mlruns/
+
+# Hugging Face / cache
+.cache/
+.huggingface/
+transformers_cache/
+
+# Misc
+*.lock
+*.sqlite3
+*.db
+*.tmp
+
+# Keep local test requirements under /test (tracked) — do not ignore `test/` itself
+# End of file
