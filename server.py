@@ -39,13 +39,12 @@ logger = logging.getLogger("gpu-server")
 # ---------------------------------------------------------------------------
 # Model Storage Configuration (Vast.ai Volume)
 # ---------------------------------------------------------------------------
-# Models are stored in /data volume (persistent across stop/start)
-MODELS_DIR = Path(os.getenv("MODELS_DIR", "/data/models"))
+# Models are stored in /workspace volume (persistent across stop/start)
+MODELS_DIR = Path(os.getenv("MODELS_DIR", "/workspace/models"))
 MODELS_DIR.mkdir(parents=True, exist_ok=True)
 
 # Set cache directories for model libraries
 os.environ["HF_HOME"] = str(MODELS_DIR / "huggingface")
-os.environ["TRANSFORMERS_CACHE"] = str(MODELS_DIR / "huggingface")
 os.environ["TORCH_HOME"] = str(MODELS_DIR / "torch")
 
 logger.info(f"📁 Models directory: {MODELS_DIR}")

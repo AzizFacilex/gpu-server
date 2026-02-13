@@ -1,19 +1,19 @@
 """
-Download models to /data volume at runtime.
+Download models to /workspace volume at runtime.
 Models persist across instance stop/start cycles via vast.ai volumes.
 """
 
 import os
 import sys
+import traceback
 from pathlib import Path
 
-# Volume mount point - vast.ai mounts volumes at /data by default
-MODELS_DIR = Path(os.getenv("MODELS_DIR", "/data/models"))
+# Volume mount point - vast.ai mounts volumes at /workspace by default
+MODELS_DIR = Path(os.getenv("MODELS_DIR", "/workspace/models"))
 MODELS_DIR.mkdir(parents=True, exist_ok=True)
 
 # Set cache directories for HuggingFace and other libraries
 os.environ["HF_HOME"] = str(MODELS_DIR / "huggingface")
-os.environ["TRANSFORMERS_CACHE"] = str(MODELS_DIR / "huggingface")
 os.environ["TORCH_HOME"] = str(MODELS_DIR / "torch")
 
 print(f"📁 Models directory: {MODELS_DIR}")
@@ -33,8 +33,9 @@ try:
         model = ChatterboxTTS.from_pretrained(device="cpu")
         del model
         print("✅ Chatterbox TTS model downloaded to volume")
-except Exception as e:
-    print(f"⚠️ Chatterbox TTS download failed: {e}")
+except Exception:
+    print("⚠️ Chatterbox TTS download failed:")
+    traceback.print_exc()  # prints the full stack trace
     sys.exit(1)
 
 print("📥 Checking/Downloading faster-whisper large-v3 model...")
